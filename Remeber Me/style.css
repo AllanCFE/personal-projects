@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(255, 253, 220);
+}
+
+.bg {
+    background-color: rgb(247, 247, 247);
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 2px rgba(110, 110, 110, 0.267);
+}
+
+h1 {
+    color: rgb(90, 90, 90);
+    text-align: center;
+}
