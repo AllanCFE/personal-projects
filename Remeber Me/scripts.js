@@ -37,7 +37,7 @@ function create () {
 
         let dateandtime = new Date(hour.value)
         let tasktext = text.value
-        item.innerHTML = `<input type='checkbox' onclick='deleteTask()' pos='${Task.list.length}'> ${tasktext} | ${dateandtime.getHours()}:${dateandtime.getMinutes()} | ${dateandtime.getDate()}/${dateandtime.getMonth() + 1}/${dateandtime.getFullYear()}`
+        item.innerHTML = `<input class='form-check-input' type='checkbox' onclick='deleteTask()' pos='${Task.list.length}'> ${tasktext} | ${dateandtime.getHours()}:${dateandtime.getMinutes()} | ${dateandtime.getDate()}/${dateandtime.getMonth() + 1}/${dateandtime.getFullYear()}`
         
         //Cleaning for the next task
         text.value = ""
