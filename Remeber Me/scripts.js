@@ -1,10 +1,9 @@
-document.querySelector('footer').innerHTML = new Date().getHours() + ":"  + new Date().getMinutes()
-
 //Class to standardize the tasks
 class Task {
-    constructor(text, datetime) {
+    constructor(text, datetime, id) {
         this.text = text
         this.datetime = datetime
+        this.id = id
     }
 }
 
@@ -34,10 +33,11 @@ function create () {
         //Creating the task in the user interface
         let item = document.createElement('div')
         item.setAttribute('class', 'element')
+        item.setAttribute('key',Task.list.length)
 
         let dateandtime = new Date(hour.value)
         let tasktext = text.value
-        item.innerHTML = `<input type='checkbox'> ${tasktext} | ${dateandtime.getHours()}:${dateandtime.getMinutes()} | ${dateandtime.getDate()}/${dateandtime.getMonth() + 1}/${dateandtime.getFullYear()}`
+        item.innerHTML = `<input type='checkbox' onclick='deleteTask()' pos='${Task.list.length}'> ${tasktext} | ${dateandtime.getHours()}:${dateandtime.getMinutes()} | ${dateandtime.getDate()}/${dateandtime.getMonth() + 1}/${dateandtime.getFullYear()}`
         
         //Cleaning for the next task
         text.value = ""
@@ -49,8 +49,27 @@ function create () {
         tasklist.appendChild(item)
 
         //Setting the task at the control list
-        let newtask = new Task(tasktext, dateandtime)
+        let newtask = new Task(tasktext, dateandtime, Task.list.length)
         Task.list.push(newtask)
-        console.log(Task.list)
     }
+}
+
+
+function deleteTask() {
+    //Checkbox
+    let pos = document.querySelector(`input[type='checkbox']:checked`).getAttribute('pos')
+    //Div of the task in user interface
+    let tInterface = document.querySelector(`div.element[key='${pos}']`)
+    //Confirm if the user wants to delete the task
+    let res = confirm(`Do you want to finish the task ${Task.list[pos].text}?`)
+
+    if(res){
+        tInterface.parentElement.removeChild(tInterface)
+        for (let index in Task.list){
+            if(Task.list[index].id = pos){
+                Task.list.splice(pos,1)
+                return
+            }
+        }
+    } else document.querySelector(`input[type='checkbox']:checked`).checked = false
 }
