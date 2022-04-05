@@ -1,10 +1,10 @@
 body {
-    background-color: rgb(255, 255, 247);
+    background-color: rgb(223, 241, 248);
 }
 
 .bg {
     background-color: rgb(247, 247, 247);
-    width: 90%;
+    width: 65%;
     padding: 10px;
     margin: auto;
     border-radius: 10px;
@@ -13,6 +13,8 @@ body {
 
 h1 {
     text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
 }
 
 .element {
